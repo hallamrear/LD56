@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,10 @@ public class TestNavController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    private void Awake()
+    {
         m_Camera = Camera.main;
         m_Agent = GetComponent<NavMeshAgent>();
     }
@@ -24,12 +29,17 @@ public class TestNavController : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
-            Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition); ;
+            Ray ray = m_Camera.ScreenPointToRay(Input.mousePosition);
 
             if(Physics.Raycast(ray, out hit, Mathf.Infinity, m_GroundMask))
             {
-                m_Agent.SetDestination(hit.point);
+                SetTarget(hit.point);
             }
         }
+    }
+
+    public void SetTarget(Vector3 position)
+    {
+        m_Agent.SetDestination(position);
     }
 }
