@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092bb321a9c4cac4e858e72bbd9e5fe3, type: 3}
+  m_Name: Team Materials
+  m_EditorClassIdentifier: 
+  Unassigned: {fileID: 2100000, guid: abe8828ff3eae3749b9fbfa80c8490b7, type: 2}
+  TeamA: {fileID: 2100000, guid: 31c432a9aa1cfe7468eccf346e97a005, type: 2}
+  TeamB: {fileID: 2100000, guid: db8a2b4d8f6e821429782fe3d7bc595d, type: 2}
+  TeamC: {fileID: 2100000, guid: 1f334129d43207c4889aec304ee66d1e, type: 2}

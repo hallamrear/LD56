@@ -32,17 +32,17 @@ public class Test_HiveSpawnScript : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.I))
                 {
-                    TrySpawn(TEAM_IDENTIFIER.TEAM_A_GREEN);
+                    TrySpawn(TEAM_IDENTIFIER.TEAM_A);
                 }
 
                 if (Input.GetKeyDown(KeyCode.O))
                 {
-                    TrySpawn(TEAM_IDENTIFIER.TEAM_B_RED);
+                    TrySpawn(TEAM_IDENTIFIER.TEAM_B);
                 }
 
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    TrySpawn(TEAM_IDENTIFIER.TEAM_C_BLUE);
+                    TrySpawn(TEAM_IDENTIFIER.TEAM_C);
                 }
             }
         }
@@ -56,16 +56,16 @@ public class Test_HiveSpawnScript : MonoBehaviour
 
             if (obj)
             {
-                UnitSettings settings = obj.GetComponent<UnitSettings>();
+                TeamDetails settings = obj.GetComponent<TeamDetails>();
                 if (settings)
                 {
                     settings.SetTeam(teamID);
                 }
 
-                TestNavController nav = obj.GetComponent<TestNavController>();
-                if (nav)
+                UnitBehaviour behaviour = obj.GetComponent<UnitBehaviour>();
+                if (behaviour)
                 {
-                    nav.SetTarget(BuildingSpawnPoint.position);
+                    behaviour.Navigation.SetTarget(BuildingSpawnPoint.position + (Vector3.forward * 0.05f));
                 }
 
                 m_TimeSinceSpawn = 0.0f;
