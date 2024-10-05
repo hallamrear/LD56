@@ -15,7 +15,7 @@ public class UnitSettings : MonoBehaviour
     public List<Material> m_TeamMaterials;
     TEAM_IDENTIFIER m_TeamID;
     [SerializeField]
-    public List<GameObject> m_TeamMaterialObjects;
+    List<GameObject> m_TeamMaterialObjects;
 
     // Start is called before the first frame update
     void Start()
