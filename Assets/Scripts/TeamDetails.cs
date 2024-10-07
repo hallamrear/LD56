@@ -13,6 +13,7 @@ public class TeamDetails : MonoBehaviour
 {
     [SerializeField]
     TeamMaterialsScriptableObject m_TeamMaterials;
+    [SerializeField]
     TEAM_IDENTIFIER m_TeamID;
     [SerializeField]
     List<GameObject> m_TeamMaterialObjects;
@@ -35,7 +36,7 @@ public class TeamDetails : MonoBehaviour
 
         Material matToApply = null;
         
-            switch (m_TeamID)
+        switch (m_TeamID)
         {
             case TEAM_IDENTIFIER.UNASSIGNED_TEAM:
                 matToApply = m_TeamMaterials.Unassigned;
@@ -58,5 +59,10 @@ public class TeamDetails : MonoBehaviour
             MeshRenderer renderer = obj.GetComponent<MeshRenderer>();
             renderer.material = matToApply;            
         }
+    }
+
+    public TEAM_IDENTIFIER GetTeam()
+    {
+        return m_TeamID;
     }
 }

@@ -106,11 +106,21 @@ public class UnitSelectionManager : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+            string[] layers = { "BuildingSelection", "Ground" };
+            LayerMask groundMask = LayerMask.GetMask("Ground");
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask(layers)))
             {
-                foreach (UnitBehaviour obj in SelectedUnits)
+                GameObject other = hit.collider.gameObject;
+                    
+                if (other != null)
                 {
-                    obj.Navigation.SetTarget(hit.point);
+                    //Have right clicked on a resource node.
+                    foreach(UnitBehaviour obj in SelectedUnits)
+                    {
+                        //if ((groundMask & 1 << other.layer) == 1 << other.layer)
+                        obj.OnRightClick(other, hit.point, other.transform.rotation);
+                    }
                 }
             }
         }
@@ -123,7 +133,10 @@ public class UnitSelectionManager : MonoBehaviour
             DeselectAll();
         }
 
-        SelectedUnits.Add(unit);
+        if (SelectedUnits.Contains(unit) == false)
+        {
+            SelectedUnits.Add(unit);
+        }
     }
 
     void SelectByBoxDrag()

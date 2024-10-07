@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 092bb321a9c4cac4e858e72bbd9e5fe3, type: 3}
-  m_Name: Team Materials
+  m_Name: Default Team Materials
   m_EditorClassIdentifier: 
   Unassigned: {fileID: 2100000, guid: abe8828ff3eae3749b9fbfa80c8490b7, type: 2}
   TeamA: {fileID: 2100000, guid: 31c432a9aa1cfe7468eccf346e97a005, type: 2}
