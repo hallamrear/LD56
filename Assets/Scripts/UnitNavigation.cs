@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class UnitNavigation : MonoBehaviour
 {
-    NavMeshAgent m_Agent;
+    NavMeshAgent m_Agent = null;
     LayerMask m_GroundMask;
 
     private void Awake()
@@ -18,6 +18,7 @@ public class UnitNavigation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -29,5 +30,10 @@ public class UnitNavigation : MonoBehaviour
     public void SetTarget(Vector3 position)
     {
         m_Agent.SetDestination(position);
+    }
+
+    public NavMeshAgent GetAgent()
+    {
+        return m_Agent;
     }
 }

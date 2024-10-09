@@ -15,6 +15,8 @@ public class HiveBehaviour : MonoBehaviour
     GameObject m_WorkerPrefab;
     [SerializeField]
     GameObject m_SoldierPrefab;
+    [SerializeField]
+    GameObject m_FlyingAntPrefab;
 
     int m_ResourceCount;
 
@@ -43,6 +45,17 @@ public class HiveBehaviour : MonoBehaviour
         }
     }
 
+    public void SpawnFlyingAnt()
+    {
+        if (m_FlyingAntPrefab == null)
+            return;
+
+        GameObject flyingAnt = Instantiate(m_FlyingAntPrefab, SpawnLocation.position, Quaternion.identity);
+        flyingAnt.GetComponent<FlyingAntBehaviour>().SetHiveGameObject(this);
+        TeamDetails teamDetails = flyingAnt.GetComponent<TeamDetails>();
+        teamDetails.SetTeam(m_TeamDetails.GetTeam());
+    }
+
     public void SpawnWorkerAnt()
     {
         if (m_WorkerPrefab == null)
@@ -50,8 +63,8 @@ public class HiveBehaviour : MonoBehaviour
 
         GameObject worker = Instantiate(m_WorkerPrefab, SpawnLocation.position, Quaternion.identity);
         worker.GetComponent<WorkerAntBehaviour>().SetHiveGameObject(this);
-        TeamDetails workerTeamDetails = worker.GetComponent<TeamDetails>();
-        workerTeamDetails.SetTeam(m_TeamDetails.GetTeam());
+        TeamDetails teamDetails = worker.GetComponent<TeamDetails>();
+        teamDetails.SetTeam(m_TeamDetails.GetTeam());
     }
 
 
@@ -62,10 +75,9 @@ public class HiveBehaviour : MonoBehaviour
 
         GameObject soldier = Instantiate(m_SoldierPrefab, SpawnLocation.position, Quaternion.identity);
         soldier.GetComponent<SoldierAntBehaviour>().SetHiveGameObject(this);
-        TeamDetails SoldierTeamDetails = soldier.GetComponent<TeamDetails>();
-        SoldierTeamDetails.SetTeam(m_TeamDetails.GetTeam());
+        TeamDetails teamDetails = soldier.GetComponent<TeamDetails>();
+        teamDetails.SetTeam(m_TeamDetails.GetTeam());
     }
-
 
     public void AddResourceAmount(int amount)
     {
